@@ -1,0 +1,27 @@
+{
+  "name": "json-auto-format",
+  "version": "0.0.1",
+  "description": "auto format json input in textarea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AneeshAjaroy/json-auto-format.git"
+  },
+  "keywords": [
+    "auto-format",
+    "auto",
+    "format",
+    "textarea",
+    "json",
+    "format"
+  ],
+  "author": "Ajaroy Gantasala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AneeshAjaroy/json-auto-format/issues"
+  },
+  "homepage": "https://github.com/AneeshAjaroy/json-auto-format#readme"
+}
