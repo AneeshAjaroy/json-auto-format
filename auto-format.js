@@ -1,5 +1,5 @@
 export default function autoFormat(textarea) {
-    if (!(textarea instanceof HTMLTextAreaElement)) {
+    if (!(textarea instanceof HTMLtextareaElement)) {
         throw new Error("auto format requires a textarea element")
     }
 
@@ -11,16 +11,22 @@ export default function autoFormat(textarea) {
             '"':'"'
         }
 
+        const pairsComplete = {
+            "{":"{}",
+            "[":"[]",
+            '"':'""'
+        }
+
         const revPairs = {
             "}":"{",
             "]":"[",
             '"':'"'
         }
 
-        let initialPos = textArea.selectionStart
-        let finalPos = textArea.selectionEnd
-        let beforeText = textArea.value.substring(0,initialPos)
-        let afterText = textArea.value.substring(finalPos)
+        let initialPos = textarea.selectionStart
+        let finalPos = textarea.selectionEnd
+        let beforeText = textarea.value.substring(0,initialPos)
+        let afterText = textarea.value.substring(finalPos)
         let offsetLen = 0
         let borderOffset = ""
         let insertText = ""
@@ -29,8 +35,8 @@ export default function autoFormat(textarea) {
         if (pairs[e.key]) {
             if (finalPos !== initialPos) {
                 e.preventDefault()
-                console.log(textArea.value.substring(initialPos,finalPos))
-                insertText = e.key + textArea.value.substring(initialPos,finalPos) + pairs[e.key]
+                console.log(textarea.value.substring(initialPos,finalPos))
+                insertText = e.key + textarea.value.substring(initialPos,finalPos) + pairs[e.key]
                 offsetLen = finalPos - initialPos + 3
             } else {
                 e.preventDefault()
@@ -48,7 +54,7 @@ export default function autoFormat(textarea) {
         if (e.key === "Backspace") {
             beforeKey = beforeText.at(-1)
             afterKey = afterText[0]
-            if (pairs[beforeKey] === beforeKey + afterKey) {
+            if (pairsComplete[beforeKey] === beforeKey + afterKey) {
                 e.preventDefault()
                 offsetLen = -1
                 beforeText = beforeText.slice(0,-1)
@@ -70,9 +76,9 @@ export default function autoFormat(textarea) {
         }
 
         if (offsetLen !== 0) {
-            textArea.value = beforeText + insertText + afterText
-            textArea.selectionStart = initialPos + offsetLen
-            textArea.selectionEnd = initialPos + offsetLen
+            textarea.value = beforeText + insertText + afterText
+            textarea.selectionStart = initialPos + offsetLen
+            textarea.selectionEnd = initialPos + offsetLen
         }
 
     })
