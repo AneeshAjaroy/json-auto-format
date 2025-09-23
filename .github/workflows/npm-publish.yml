@@ -9,7 +9,6 @@ on:
       - "v*"
 
 jobs:
-
   publish-npm:
     runs-on: ubuntu-latest
     steps:
