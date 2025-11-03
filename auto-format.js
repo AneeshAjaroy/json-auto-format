@@ -1,5 +1,5 @@
 export default function autoFormat(textarea) {
-    if (!(textarea instanceof HTMLtextareaElement)) {
+    if (!(textarea instanceof HTMLTextAreaElement)) {
         throw new Error("auto format requires a textarea element")
     }
 
